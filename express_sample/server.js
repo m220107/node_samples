@@ -1,4 +1,4 @@
-// expressモジュール読み込み
+// expressモジュール読み込み require -> python でいうところのinport
 const express = require('express') 
 // dotenvモジュール読み込み
 const dotenv = require('dotenv')
@@ -20,6 +20,9 @@ const app = express()
 app.use(express.static(__dirname + '/public'));
 // URLエンコード
 app.use(express.urlencoded({ extended: true }));
+
+// EJSをテンプレートエンジンとして設定
+app.set('view engine', 'ejs')
 
 // ルーティングを有効
 app.use(routes)
