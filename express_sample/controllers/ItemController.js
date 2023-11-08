@@ -1,12 +1,15 @@
-// models/item.js を読み込む
-const item = require('../models/item')
+// models/Item.js を読み込む
+const Item = require('../models/Item')
 
 /**
  * 商品一覧
  */
 exports.index = (req, res) => {
+    // Itemインスタンスを生成
+    const item = new Item()
     var data = {
         title: "商品一覧",
+        // 商品をすべて取得
         items: item.get(),
     }
     // views/item/index.ejs にデータを渡して表示
@@ -18,8 +21,13 @@ exports.index = (req, res) => {
  */
 exports.detail = (req, res) => {
     const id = req.params.id
+    // Itemインスタンスを生成
+    const item = new Item()
+
     // TODO: case1 RDBMS を利用する
     // TODO: case2 APIサーバを利用する
+
+    // IDで商品を取得
     var selectItem = item.find(id)
     var data = {
         title: "商品詳細",
